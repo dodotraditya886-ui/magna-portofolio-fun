@@ -1,0 +1,128 @@
+/* Custom Fonts setup */
+.font-serif {
+    font-family: 'Cinzel Decorative', serif;
+}
+
+.font-sans {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.font-script {
+    font-family: 'Caveat', cursive;
+}
+
+/* =========================================================
+   1. TICKER MARQUEE ANIMATION (HERO BANNER)
+   ========================================================= */
+@keyframes continuous-ticker {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.ticker-wrapper {
+    display: flex;
+    width: max-content;
+    animation: continuous-ticker 20s linear infinite;
+}
+
+.ticker-wrapper:hover {
+    animation-play-state: paused;
+}
+
+
+/* =========================================================
+   GALERI ARSIP - SEAMLESS INFINITE AUTO SCROLL
+   Catatan: jarak antar-card memakai margin-right (bukan gap) agar
+   lebar track tepat 2x lebar satu set -> translateX(-50%) = loop mulus.
+   Durasi dihitung otomatis oleh script.js (kecepatan px/detik konsisten).
+   ========================================================= */
+@keyframes galleryAutoScroll {
+    from { transform: translate3d(0, 0, 0); }
+    to   { transform: translate3d(-50%, 0, 0); }
+}
+
+.gallery-viewport {
+    overflow: hidden;
+}
+
+.gallery-track {
+    --gallery-gap: 1.5rem;
+    --gallery-duration: 40s;
+    display: flex;
+    flex-wrap: nowrap;
+    width: max-content;
+    animation: galleryAutoScroll var(--gallery-duration) linear infinite;
+    will-change: transform;
+    backface-visibility: hidden;
+}
+
+.gallery-track > * {
+    margin-right: var(--gallery-gap);
+}
+
+/* Pause saat hover hanya di perangkat dengan mouse (di layar sentuh
+   :hover "menempel" setelah tap dan akan menghentikan galeri selamanya) */
+@media (hover: hover) and (pointer: fine) {
+    .gallery-viewport:hover .gallery-track {
+        animation-play-state: paused;
+    }
+}
+
+/* =========================================================
+   FOOTER SCROLL REVEAL (MAGNA SWING)
+   State tersembunyi hanya aktif jika JS siap (.reveal-ready), sehingga
+   tanpa JS / tanpa IntersectionObserver teks tetap terlihat.
+   Urutan: MAGNA -> SWING -> copyright. Semua delay diatur di CSS.
+   ========================================================= */
+.reveal-ready .footer-reveal-word {
+    opacity: 0;
+    transform: translate3d(0, 40px, 0) scale(0.94);
+    transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+.reveal-ready .footer-reveal-word:nth-child(2) {
+    transition-delay: 0.25s;
+}
+
+.reveal-ready .footer-reveal-copyright {
+    opacity: 0;
+    transform: translate3d(0, 16px, 0);
+    transition: opacity 0.9s ease-out 1.1s,
+                transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) 1.1s;
+    will-change: opacity, transform;
+}
+
+.reveal-ready .footer-reveal-word.is-visible,
+.reveal-ready .footer-reveal-copyright.is-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+}
+
+/* Aksesibilitas: pengguna "reduce motion" -> tanpa animasi.
+   Galeri menjadi area yang bisa digeser manual. */
+@media (prefers-reduced-motion: reduce) {
+    .gallery-track {
+        animation: none;
+    }
+    .gallery-viewport {
+        overflow-x: auto;
+    }
+    .reveal-ready .footer-reveal-word,
+    .reveal-ready .footer-reveal-copyright {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
+
+/* Custom selection styling */
+::selection {
+    background-color: #E63946;
+    color: #FFFFFF;
+}

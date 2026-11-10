@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAGNA SWING — Black Bulls Senior Magic Knight</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Cinzel+Decorative:wght@700;900&family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <!-- CDN Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- CDN GSAP (GreenSock) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Aktifkan state awal scroll-reveal footer sebelum halaman dirender
+         (mencegah teks footer berkedip). Tanpa IntersectionObserver, teks tetap tampil. -->
+    <script>
+        if ("IntersectionObserver" in window) {
+            document.documentElement.classList.add("reveal-ready");
+        }
+    </script>
+</head>
+<body class="bg-[#121212] text-[#F4F1EA] font-sans antialiased selection:bg-[#E63946] selection:text-white overflow-x-hidden">
+
+    <!-- Floating Cursor Preview Container (Section 02 Hover) -->
+    <div id="cursor-preview" class="pointer-events-none fixed top-0 left-0 z-50 w-64 h-80 opacity-0 scale-75 overflow-hidden rounded-xl border border-[#F95738]/40 shadow-2xl transition-opacity duration-300 ease-out">
+        <img id="cursor-preview-img" src="" alt="Jutsu Preview" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500">
+    </div>
+
+    <!-- 01. HEADER / NAVIGATION -->
+    <header class="fixed top-0 left-0 w-full z-40 bg-[#121212]/70 backdrop-blur-md border-b border-white/10 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="font-serif text-2xl font-black tracking-widest text-[#E63946] hover:text-[#F95738] transition-colors">
+                MAGNA S.
+            </a>
+            <nav class="hidden md:flex space-x-8 text-xs tracking-widest uppercase font-semibold text-[#F4F1EA]/70">
+                <a href="#profil" class="hover:text-[#E63946] transition-colors">Profil</a>
+                <a href="#jutsu" class="hover:text-[#E63946] transition-colors">Jutsu & Aktivitas</a>
+                <a href="#quote" class="hover:text-[#E63946] transition-colors">Quote</a>
+                <a href="#galeri" class="hover:text-[#E63946] transition-colors">Galeri</a>
+                <a href="#kontak" class="hover:text-[#E63946] transition-colors">Kontak</a>
+            </nav>
+            <a href="#kontak" class="text-xs font-bold uppercase tracking-wider px-4 py-2 border border-[#E63946] text-[#E63946] hover:bg-[#E63946] hover:text-white transition-all duration-300">
+                Join Squad
+            </a>
+        </div>
+    </header>
+
+    <!-- 02. HERO SECTION -->
+    <section class="relative min-h-screen flex items-center justify-center pt-24 pb-12 overflow-hidden border-b border-white/10">
+        <div class="absolute inset-0 flex items-center justify-center select-none pointer-events-none opacity-10">
+            <h1 class="font-serif text-[18vw] leading-none font-black tracking-widest text-white uppercase">
+                MAGNA
+            </h1>
+        </div>
+
+        <span class="absolute top-1/4 left-10 font-black text-9xl text-white/5 select-none pointer-events-none">
+            マグナ
+        </span>
+
+        <div class="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+            <div class="lg:col-span-3 space-y-6 order-2 lg:order-1">
+                <div class="inline-block px-3 py-1 bg-[#E63946] text-white font-extrabold text-xs tracking-widest uppercase rounded-sm shadow-lg shadow-[#E63946]/30">
+                    BLACK BULLS!!
+                </div>
+                <div class="border-l-2 border-[#F95738] pl-4">
+                    <p class="text-xs text-white/50 uppercase tracking-widest">Asal Region</p>
+                    <p class="font-bold text-lg text-[#F4F1EA]">Rayaka Village, Clover Kingdom</p>
+                </div>
+                <div class="border-l-2 border-[#E63946] pl-4">
+                    <p class="text-xs text-white/50 uppercase tracking-widest">Headline Status</p>
+                    <p class="font-bold text-base text-[#F4F1EA]">Soul Chain Deathmatch Pioneer</p>
+                </div>
+            </div>
+
+            <div class="lg:col-span-6 flex justify-center items-center relative order-1 lg:order-2">
+                <div class="relative w-72 h-96 sm:w-96 sm:h-[480px] bg-gradient-to-t from-[#E63946]/40 via-transparent to-transparent rounded-t-full border border-white/10 flex items-center justify-center overflow-hidden group">
+                    <img src="images/magna-01.jpg" 
+                         alt="Magna Swing Editorial Visual" 
+                         class="w-full h-full object-cover object-center grayscale contrast-125 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700 ease-out">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#121212] via-transparent to-transparent opacity-80"></div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-3 space-y-6 order-3 text-left lg:text-right">
+                <div class="border-r-0 lg:border-r-2 lg:border-l-0 border-l-2 border-[#F95738] lg:pr-4 pl-4 lg:pl-0">
+                    <p class="text-xs text-white/50 uppercase tracking-widest">Gelar Ksatria</p>
+                    <p class="font-bold text-lg text-[#F4F1EA]">5th Class Junior Magic Knight</p>
+                </div>
+                <div>
+                    <p class="font-script text-3xl text-[#F95738] -rotate-3">
+                        "Never give up, no matter what!"
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 03. RUNNING TICKER BANNER -->
+    <div class="w-full bg-[#E63946] py-3 overflow-hidden whitespace-nowrap border-y border-red-500/30">
+        <div class="ticker-wrapper flex items-center gap-12 font-black text-sm uppercase tracking-widest text-black">
+            <span>FLAME MAGIC SPECIALIST</span>
+            <span>BLACK BULLS SENIOR MEMBER</span>
+            <span>PEASANT WHO SURPASSED LIMITS</span>
+            <span>SOUL CHAIN DEATHMATCH CREATOR</span>
+            <span>RAYAKA VILLAGE PRIDE</span>
+            <span>FLAME MAGIC SPECIALIST</span>
+            <span>BLACK BULLS SENIOR MEMBER</span>
+            <span>PEASANT WHO SURPASSED LIMITS</span>
+            <span>SOUL CHAIN DEATHMATCH CREATOR</span>
+            <span>RAYAKA VILLAGE PRIDE</span>
+        </div>
+    </div>
+
+    <!-- 04. SECTION 01 - PROFIL -->
+    <section id="profil" class="py-24 max-w-7xl mx-auto px-6 border-b border-white/10">
+        <div class="flex items-center space-x-4 mb-16">
+            <h2 class="text-3xl sm:text-4xl font-extrabold uppercase tracking-tight">Profil Utama</h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-5 relative">
+                <div class="aspect-[3/4] border border-white/20 p-3 bg-white/5 relative">
+                    <img src="images/magna-02.jpg" 
+                         alt="Magna Swing Portrait" 
+                         class="w-full h-full object-cover grayscale contrast-125">
+                    <div class="absolute -bottom-4 -right-4 bg-[#F95738] text-black font-black px-4 py-2 text-xs tracking-widest uppercase">
+                        MAGNA SWING
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-7 space-y-8">
+                <p class="text-lg text-[#F4F1EA]/80 leading-relaxed font-light">
+                    Ksatria Sihir tangguh dari squad <span class="text-[#E63946] font-semibold">Black Bulls</span> yang membuktikan bahwa keterbatasan mana bukanlah penghalang untuk mencapai kejayaan. Berasal dari rakyat biasa di Desa Rayaka, Magna bertarung dengan semangat membara, nyali baja, dan taktik sihir api kreatif.
+                </p>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="p-5 border border-white/10 bg-white/[0.02] hover:border-[#E63946]/50 transition-colors">
+                        <p class="text-xs text-white/40 uppercase tracking-widest mb-1">Nama Lengkap</p>
+                        <p class="font-bold text-base text-[#F4F1EA]">Magna Swing</p>
+                    </div>
+                    <div class="p-5 border border-white/10 bg-white/[0.02] hover:border-[#E63946]/50 transition-colors">
+                        <p class="text-xs text-white/40 uppercase tracking-widest mb-1">Asal</p>
+                        <p class="font-bold text-base text-[#F4F1EA]">Desa Rayaka</p>
+                    </div>
+                    <div class="p-5 border border-white/10 bg-white/[0.02] hover:border-[#E63946]/50 transition-colors">
+                        <p class="text-xs text-white/40 uppercase tracking-widest mb-1">Squad</p>
+                        <p class="font-bold text-base text-[#E63946]">Black Bulls</p>
+                    </div>
+                    <div class="p-5 border border-white/10 bg-white/[0.02] hover:border-[#E63946]/50 transition-colors">
+                        <p class="text-xs text-white/40 uppercase tracking-widest mb-1">Atribut Sihir</p>
+                        <p class="font-bold text-base text-[#F95738]">Sihir Api (Flame Magic)</p>
+                    </div>
+                </div>
+
+                <div class="pt-4 border-t border-white/10">
+                    <p class="font-script text-3xl text-[#F4F1EA]/90">
+                        "Bahkan jika aku ditakdirkan menjadi orang biasa, aku akan membakar diriku sampai setara dengan para monster!"
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 05. SECTION 02 - JUTSU & AKTIVITAS -->
+    <section id="jutsu" class="py-24 max-w-7xl mx-auto px-6 border-b border-white/10">
+        <div class="flex items-center space-x-4 mb-16">
+            <h2 class="text-3xl sm:text-4xl font-extrabold uppercase tracking-tight">Jutsu & Aktivitas Interaktif</h2>
+        </div>
+
+        <div class="divide-y divide-white/10">
+            <div class="jutsu-item group py-8 flex flex-col md:flex-row md:items-center justify-between cursor-pointer transition-colors hover:bg-white/[0.02] px-4"
+                 data-image="images/magna-01.jpg">
+                <div class="flex items-center space-x-6">
+                    <div>
+                        <h3 class="text-2xl font-extrabold uppercase group-hover:text-[#F95738] transition-colors">Flame Magic: Fireball Explosive Run</h3>
+                        <p class="text-xs text-white/50 tracking-wider uppercase mt-1">Serangan Jarak Jauh / Kontrol Bola Api Lanjutan</p>
+                    </div>
+                </div>
+                <span class="text-xs font-mono tracking-widest text-white/40 uppercase mt-4 md:mt-0 group-hover:text-white transition-colors">
+                    [ Special Technique ]
+                </span>
+            </div>
+
+            <div class="jutsu-item group py-8 flex flex-col md:flex-row md:items-center justify-between cursor-pointer transition-colors hover:bg-white/[0.02] px-4"
+                 data-image="images/magna-10.jpg">
+                <div class="flex items-center space-x-6">
+                    <div>
+                        <h3 class="text-2xl font-extrabold uppercase group-hover:text-[#F95738] transition-colors">Secret Mana Method: Soul Chain Deathmatch</h3>
+                        <p class="text-xs text-white/50 tracking-wider uppercase mt-1">Sihir Pengikat Mana / Pembagi Mana 50-50</p>
+                    </div>
+                </div>
+                <span class="text-xs font-mono tracking-widest text-white/40 uppercase mt-4 md:mt-0 group-hover:text-white transition-colors">
+                    [ Masterpiece Creation ]
+                </span>
+            </div>
+
+            <div class="jutsu-item group py-8 flex flex-col md:flex-row md:items-center justify-between cursor-pointer transition-colors hover:bg-white/[0.02] px-4"
+                 data-image="images/magna-07.jpg">
+                <div class="flex items-center space-x-6">
+                    <div>
+                        <h3 class="text-2xl font-extrabold uppercase group-hover:text-[#F95738] transition-colors">Black Bulls Squad Patrol & Training</h3>
+                        <p class="text-xs text-white/50 tracking-wider uppercase mt-1">Patroli Perbatasan & Pelatihan Bersama Luck Voltia</p>
+                    </div>
+                </div>
+                <span class="text-xs font-mono tracking-widest text-white/40 uppercase mt-4 md:mt-0 group-hover:text-white transition-colors">
+                    [ Daily Activity ]
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 06. SECTION 03 - QUOTE -->
+    <section id="quote" class="relative py-32 bg-[#0A0A0A] border-b border-white/10 overflow-hidden flex items-center justify-center">
+        <span class="absolute text-[25vw] font-black text-white/[0.02] select-none pointer-events-none leading-none">
+            マグナ
+        </span>
+
+        <div class="max-w-4xl mx-auto px-6 text-center relative z-10 space-y-6">
+            <div class="w-12 h-1 bg-[#E63946] mx-auto"></div>
+            <h2 class="text-3xl sm:text-5xl font-extrabold leading-tight tracking-tight text-[#F4F1EA]">
+                "Hard work and guts can break through any barrier!"
+            </h2>
+            <p class="font-serif italic text-lg text-[#F95738]">
+                — Magna Swing, Senior Magic Knight of Black Bulls
+            </p>
+        </div>
+    </section>
+
+    <!-- 07. SECTION 04 - GALERI AUTO-SCROLLING MARQUEE -->
+<section id="galeri" class="py-24 border-b border-white/10 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 flex justify-between items-end mb-12">
+        <div>
+            <h2 class="text-3xl sm:text-4xl font-extrabold uppercase tracking-tight">Galeri Arsip</h2>
+        </div>
+        <p class="text-xs font-mono text-white/40 hidden sm:block">
+            [ HOVER TO PAUSE ]
+        </p>
+    </div>
+
+    <!-- Container Utama Pembungkus Layout -->
+    <div class="gallery-viewport w-full overflow-hidden">
+        <div class="gallery-track flex flex-nowrap w-max">
+            <!-- SET 1 (KARTU UTAMA) -->
+            <div class="w-80 h-96 flex-shrink-0 relative group border border-white/10 overflow-hidden bg-white/5">
+                <img src="images/magna-04.jpg" alt="Delinquent Vibe" class="w-full h-full object-cover grayscale group-hover:scale-110 group-hover:grayscale-0 transition-all duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+                <span class="absolute top-4 left-4 text-[10px] font-black px-2 py-1 bg-[#E63946] text-white uppercase tracking-widest">DELINQUENT</span>
+                <p class="absolute bottom-4 left-4 font-bold text-base text-white">Rayaka Roughneck Style</p>
+            </div>
+
+            <div class="w-80 h-96 flex-shrink-0 relative group border border-white/10 overflow-hidden bg-white/5">
+                <img src="images/magna-09.jpg" alt="Flame Magic" class="w-full h-full object-cover grayscale group-hover:scale-110 group-hover:grayscale-0 transition-all duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+                <span class="absolute top-4 left-4 text-[10px] font-black px-2 py-1 bg-[#F95738] text-white uppercase tracking-widest">FLAME MAGIC</span>
+                <p class="absolute bottom-4 left-4 font-bold text-base text-white">Fireball Pitcher Form</p>
+            </div>
+
+            <div class="w-80 h-96 flex-shrink-0 relative group border border-white/10 overflow-hidden bg-white/5">
+                <img src="images/magna-03.jpg" alt="Black Bulls" class="w-full h-full object-cover grayscale group-hover:scale-110 group-hover:grayscale-0 transition-all duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+                <span class="absolute top-4 left-4 text-[10px] font-black px-2 py-1 bg-[#E63946] text-white uppercase tracking-widest">BLACK BULLS</span>
+                <p class="absolute bottom-4 left-4 font-bold text-base text-white">Squad Robe Pride</p>
+            </div>
+
+            <div class="w-80 h-96 flex-shrink-0 relative group border border-white/10 overflow-hidden bg-white/5">
+                <img src="images/magna-08.jpg" alt="Battle Mode" class="w-full h-full object-cover grayscale group-hover:scale-110 group-hover:grayscale-0 transition-all duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+                <span class="absolute top-4 left-4 text-[10px] font-black px-2 py-1 bg-[#F95738] text-white uppercase tracking-widest">BATTLE</span>
+                <p class="absolute bottom-4 left-4 font-bold text-base text-white">Soul Chain Unleashed</p>
+            </div>
+
+            <div class="w-80 h-96 flex-shrink-0 relative group border border-white/10 overflow-hidden bg-white/5">
+                <img src="images/magna-05.jpg" alt="Duo Dynamic" class="w-full h-full object-cover grayscale group-hover:scale-110 group-hover:grayscale-0 transition-all duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+                <span class="absolute top-4 left-4 text-[10px] font-black px-2 py-1 bg-[#E63946] text-white uppercase tracking-widest">DUO</span>
+                <p class="absolute bottom-4 left-4 font-bold text-base text-white">Luck & Magna Sparring</p>
+            </div>
+
+            <div class="w-80 h-96 flex-shrink-0 relative group border border-white/10 overflow-hidden bg-white/5">
+                <img src="images/magna-06.jpg" alt="Crazy Cycler" class="w-full h-full object-cover grayscale group-hover:scale-110 group-hover:grayscale-0 transition-all duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+                <span class="absolute top-4 left-4 text-[10px] font-black px-2 py-1 bg-[#F95738] text-white uppercase tracking-widest">VEHICLE</span>
+                <p class="absolute bottom-4 left-4 font-bold text-base text-white">Crazy Cyclone Ride</p>
+            </div>
+
+            <!-- SET 2 (DUPLIKASI PERSIS UNTUK SEAMLESS LOOPING) -->
+            <div class="w-80 h-96 flex-shrink-0 relative group border border-white/10 overflow-hidden bg-white/5">
+                <img src="images/magna-04.jpg" alt="Delinquent Vibe" class="w-full h-full object-cover grayscale group-hover:scale-110 group-hover:grayscale-0 transition-all duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+                <span class="absolute top-4 left-4 text-[10px] font-black px-2 py-1 bg-[#E63946] text-white uppercase tracking-widest">DELINQUENT</span>
+                <p class="absolute bottom-4 left-4 font-bold text-base text-white">Rayaka Roughneck Style</p>
+            </div>
+
+            <div class="w-80 h-96 flex-shrink-0 relative group border border-white/10 overflow-hidden bg-white/5">
+                <img src="images/magna-09.jpg" alt="Flame Magic" class="w-full h-full object-cover grayscale group-hover:scale-110 group-hover:grayscale-0 transition-all duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+                <span class="absolute top-4 left-4 text-[10px] font-black px-2 py-1 bg-[#F95738] text-white uppercase tracking-widest">FLAME MAGIC</span>
+                <p class="absolute bottom-4 left-4 font-bold text-base text-white">Fireball Pitcher Form</p>
+            </div>
+
+            <div class="w-80 h-96 flex-shrink-0 relative group border border-white/10 overflow-hidden bg-white/5">
+                <img src="images/magna-03.jpg" alt="Black Bulls" class="w-full h-full object-cover grayscale group-hover:scale-110 group-hover:grayscale-0 transition-all duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+                <span class="absolute top-4 left-4 text-[10px] font-black px-2 py-1 bg-[#E63946] text-white uppercase tracking-widest">BLACK BULLS</span>
+                <p class="absolute bottom-4 left-4 font-bold text-base text-white">Squad Robe Pride</p>
+            </div>
+
+            <div class="w-80 h-96 flex-shrink-0 relative group border border-white/10 overflow-hidden bg-white/5">
+                <img src="images/magna-08.jpg" alt="Battle Mode" class="w-full h-full object-cover grayscale group-hover:scale-110 group-hover:grayscale-0 transition-all duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+                <span class="absolute top-4 left-4 text-[10px] font-black px-2 py-1 bg-[#F95738] text-white uppercase tracking-widest">BATTLE</span>
+                <p class="absolute bottom-4 left-4 font-bold text-base text-white">Soul Chain Unleashed</p>
+            </div>
+
+            <div class="w-80 h-96 flex-shrink-0 relative group border border-white/10 overflow-hidden bg-white/5">
+                <img src="images/magna-05.jpg" alt="Duo Dynamic" class="w-full h-full object-cover grayscale group-hover:scale-110 group-hover:grayscale-0 transition-all duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+                <span class="absolute top-4 left-4 text-[10px] font-black px-2 py-1 bg-[#E63946] text-white uppercase tracking-widest">DUO</span>
+                <p class="absolute bottom-4 left-4 font-bold text-base text-white">Luck & Magna Sparring</p>
+            </div>
+
+            <div class="w-80 h-96 flex-shrink-0 relative group border border-white/10 overflow-hidden bg-white/5">
+                <img src="images/magna-06.jpg" alt="Crazy Cycler" class="w-full h-full object-cover grayscale group-hover:scale-110 group-hover:grayscale-0 transition-all duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+                <span class="absolute top-4 left-4 text-[10px] font-black px-2 py-1 bg-[#F95738] text-white uppercase tracking-widest">VEHICLE</span>
+                <p class="absolute bottom-4 left-4 font-bold text-base text-white">Crazy Cyclone Ride</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- 08. SECTION 05 - FOOTER & KONTAK -->
+    <footer id="kontak" class="pt-24 pb-12 max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20 items-end">
+            <div>
+                <p class="text-xs font-mono text-[#E63946] uppercase tracking-widest mb-2">Kontak Squad & Rekrutan</p>
+                <h3 class="text-3xl sm:text-4xl font-extrabold uppercase">Sampai Jumpa di Markas Black Bulls!</h3>
+            </div>
+            <div class="flex flex-col md:items-end space-y-4">
+                <div class="flex space-x-6 text-sm font-semibold tracking-wider">
+                    <a href="#" class="hover:text-[#E63946] transition-colors">CLOVER KINGDOM</a>
+                    <a href="#" class="hover:text-[#E63946] transition-colors">BLACK BULLS HQ</a>
+                    <a href="#" class="hover:text-[#E63946] transition-colors">GRIMOIRE ARCHIVE</a>
+                </div>
+                <a href="#profil" class="back-to-top text-xs font-bold uppercase tracking-widest px-6 py-3 border border-white/20 hover:border-[#E63946] hover:bg-[#E63946] transition-all duration-300">
+                    KEMBALI KE ATAS ↑
+                </a>
+            </div>
+        </div>
+
+        <!-- Huge Footer Text dengan Intersection Observer Scroll Reveal Animation -->
+        <div id="footer-reveal-container" class="border-t border-white/10 pt-12 text-center overflow-hidden">
+            <h1 class="font-serif text-[14vw] leading-[0.88] font-black tracking-widest text-white/10 hover:text-[#E63946]/30 transition-colors duration-500 uppercase select-none flex flex-col items-center justify-center">
+                <span class="footer-reveal-word block">MAGNA</span>
+                <span class="footer-reveal-word block">SWING</span>
+            </h1>
+            <p class="footer-reveal-copyright text-xs text-white/40 tracking-widest uppercase mt-8">
+                © 2026 MAGNA SWING. BLACK BULLS SQUAD. ALL RIGHTS RESERVED.
+            </p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
